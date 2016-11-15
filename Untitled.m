@@ -64,37 +64,35 @@ Ig233 = Ig23 - Ig33;
 Ig343 = Ig33 - Ig43;
 Ig453 = Ig43 - Ig53;
 
-figure, imshow(imregionalmax(Ig231, 8));
+Igtotal1 = imfindlocalmax(Ig121 .* Ig231 .* Ig341 .* Ig451, I);
+Igtotal2 = imfindlocalmax(Ig122 .* Ig232 .* Ig342 .* Ig452, I);
+Igtotal3 = imfindlocalmax(Ig123 .* Ig233 .* Ig343 .* Ig453, I);
 
-Igtotal1 = Ig121 .* Ig231 .* Ig341 .* Ig451;
-Igtotal2 = Ig122 .* Ig232 .* Ig342 .* Ig452;
-Igtotal3 = Ig123 .* Ig233 .* Ig343 .* Ig453;
-
-figure,
-subplot(3,4,1)
-imshow((Ig121));
-subplot(3,4,2)
-imshow((Ig231));
-subplot(3,4,3)
-imshow((Ig341));
-subplot(3,4,4)
-imshow((Ig451));
-subplot(3,4,5)
-imshow((Ig122));
-subplot(3,4,6)
-imshow((Ig232));
-subplot(3,4,7)
-imshow((Ig342));
-subplot(3,4,8)
-imshow((Ig452));
-subplot(3,4,9)
-imshow((Ig123));
-subplot(3,4,10)
-imshow((Ig233));
-subplot(3,4,11)
-imshow((Ig343));
-subplot(3,4,12)
-imshow((Ig453));
+%figure,
+%subplot(3,4,1)
+%imshow((Ig121));
+%subplot(3,4,2)
+%imshow((Ig231));
+%subplot(3,4,3)
+%imshow((Ig341));
+%subplot(3,4,4)
+%imshow((Ig451));
+%subplot(3,4,5)
+%imshow((Ig122));
+%subplot(3,4,6)
+%imshow((Ig232));
+%subplot(3,4,7)
+%imshow((Ig342));
+%subplot(3,4,8)
+%imshow((Ig452));
+%subplot(3,4,9)
+%imshow((Ig123));
+%subplot(3,4,10)
+%imshow((Ig233));
+%subplot(3,4,11)
+%imshow((Ig343));
+%subplot(3,4,12)
+%imshow((Ig453));
 
 figure,
 subplot(1,3,1)
@@ -103,3 +101,14 @@ subplot(1,3,2)
 imshow((Igtotal2));
 subplot(1,3,3)
 imshow((Igtotal3));
+
+[imout imout2] = imfindlocalmax(Ig343, I3);
+
+figure,
+imshow(I);
+hold on;
+imshow(imout2);
+
+
+
+clear all;
