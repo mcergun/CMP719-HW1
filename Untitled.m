@@ -1,21 +1,21 @@
 clear all;
 clc;
 close all;
-path = 'http://www.artandarchitecture.org.uk/assets/aa_image/320/4/e/3/4/4e342ea047913d066eb734f260b8770fee2a8f34.jpg';
-I = im2double(imread(path));
+path = 'http://i.stack.imgur.com/8rLG8.jpg';
+I = im2double(rgb2gray(imread(path)));
 % g = fspecial('gaussian', 13, 2);
 % g2 = fspecial('gaussian', 19, 3);
 % I2 = conv2(I, g, 'same');
 % I3 = conv2(I, g2, 'same');
 I2 = imresize(I, 0.5);
 I3 = imresize(I, 0.25);
-figure,
-subplot(1,3,1)
-imshow(I);
-subplot(1,3,2)
-imshow(I2);
-subplot(1,3,3)
-imshow(I3);
+%figure,
+%subplot(1,3,1)
+%imshow(I);
+%subplot(1,3,2)
+%imshow(I2);
+%subplot(1,3,3)
+%imshow(I3);
 % s + 2 filters
 % s + 1 difference images
 s = 3;
@@ -64,28 +64,42 @@ Ig233 = Ig23 - Ig33;
 Ig343 = Ig33 - Ig43;
 Ig453 = Ig43 - Ig53;
 
+figure, imshow(imregionalmax(Ig231, 8));
+
+Igtotal1 = Ig121 .* Ig231 .* Ig341 .* Ig451;
+Igtotal2 = Ig122 .* Ig232 .* Ig342 .* Ig452;
+Igtotal3 = Ig123 .* Ig233 .* Ig343 .* Ig453;
+
 figure,
 subplot(3,4,1)
-imshow(histeq(Ig121));
+imshow((Ig121));
 subplot(3,4,2)
-imshow(histeq(Ig231));
+imshow((Ig231));
 subplot(3,4,3)
-imshow(histeq(Ig341));
+imshow((Ig341));
 subplot(3,4,4)
-imshow(histeq(Ig451));
+imshow((Ig451));
 subplot(3,4,5)
-imshow(histeq(Ig122));
+imshow((Ig122));
 subplot(3,4,6)
-imshow(histeq(Ig232));
+imshow((Ig232));
 subplot(3,4,7)
-imshow(histeq(Ig342));
+imshow((Ig342));
 subplot(3,4,8)
-imshow(histeq(Ig452));
+imshow((Ig452));
 subplot(3,4,9)
-imshow(histeq(Ig123));
+imshow((Ig123));
 subplot(3,4,10)
-imshow(histeq(Ig233));
+imshow((Ig233));
 subplot(3,4,11)
-imshow(histeq(Ig343));
+imshow((Ig343));
 subplot(3,4,12)
-imshow(histeq(Ig453));
+imshow((Ig453));
+
+figure,
+subplot(1,3,1)
+imshow((Igtotal1));
+subplot(1,3,2)
+imshow((Igtotal2));
+subplot(1,3,3)
+imshow((Igtotal3));
