@@ -25,7 +25,7 @@ cim = harris(im, 1, 200, 6);
 %out3(:, :, n) = conv2(im(:, :, n), dog3, 'same');
 %end
 out0 = conv2(im, dog0, 'same');
-out1 = conv2(im, dog1, 'same');
+out1 = getDoGKeyPoints(im, 20, 21);
 out2 = conv2(im, dog2, 'same');
 out3 = conv2(im, dog3, 'same');
 
@@ -33,7 +33,7 @@ out3 = conv2(im, dog3, 'same');
 % out(out < thr) = 0;
 % out(out >= thr) = 1;
 subplot(2,2,1);
-imshow(out);
+imshow(out1);
 subplot(2,2,2);
 imshow(out2);
 subplot(2,2,3);
