@@ -9,6 +9,7 @@ function [ outim ] = diffofgauss( im, sigma )
     im1 = conv2(im, gaussian1, 'same');
     im2 = conv2(im, gaussian2, 'same');
     
-    outim = sqrt(abs(im1 - im2));
+    outim = im1 - im2;
+%     outim = sqrt(abs(im1 - im2));
 end
 
