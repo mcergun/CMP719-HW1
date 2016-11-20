@@ -20,9 +20,9 @@ I3 = imresize(I, 0.25);
 % s + 1 difference images
 s = 3;
 sigmas = zeros(s + 2, 1);
-sigmas(1) = 2;
+sigmas(1) = 2.5;
 for n=2:s+2
-    sigmas(n) = 2^((n -1) / s) * sigmas(1);
+    sigmas(n) = 2^((n -1) / s) * sigmas(1)
 end
 
 gsize = ceil(sigmas(s + 2) * 6)

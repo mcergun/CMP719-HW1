@@ -1,4 +1,3 @@
-pkg load image;
 close all;
 im = rgb2gray(imread('https://rorasa.files.wordpress.com/2011/02/spatial.png'));
 
